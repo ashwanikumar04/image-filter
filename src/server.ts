@@ -49,8 +49,8 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
       await filterImageFromURL(imageUrl)
         .then((outputImage) => {
           console.log(outputImage);
-          res.status(200).download(outputImage, '', (err) => {
-            Promise.resolve(deleteLocalFiles([outputImage]))
+          res.status(200).sendFile(outputImage, {}, (err) => {
+            deleteLocalFiles([outputImage])
           })
         })
     }
